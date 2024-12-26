@@ -87,7 +87,7 @@ def constroi_mundo():
 
     
 
-    rospy.loginfo("All models were spawn.")
+    rospy.loginfo("All models were spawned.")
 if __name__ == '__main__':
     
     rospy.init_node('world',anonymous=False)

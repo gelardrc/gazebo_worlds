@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="world" default="$(find gazebo_worlds)/worlds/plain_solar_farm.world"/> <!-- you may change GAZEBO_RESOURCE_PATH -->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" default="$(arg world)"/>
+	</include>
+</launch>
