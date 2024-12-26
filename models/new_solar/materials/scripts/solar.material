@@ -1,0 +1,14 @@
+material solar
+{
+	technique
+	{
+		pass
+		{
+
+			texture_unit
+			{
+				texture solar2.png
+			}
+		}
+	}
+}
