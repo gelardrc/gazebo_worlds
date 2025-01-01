@@ -18,6 +18,10 @@ Some Gazebo worlds created to benchmark path planning algorithms.
 
 ![Substation_2](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/substation_2.jpg)
 
+### Hydro powerplant
+
+![Hydro powerplant](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/hydro_powerplant.jpg)
+
 
 
 ## How to Use
