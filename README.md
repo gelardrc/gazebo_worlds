@@ -10,6 +10,12 @@ Some Gazebo worlds created to benchmark path planning algorithms.
 ### Plain Solar Farm
 ![Plain Solar Farm](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/plain_solar_farm.jpg)
 
+### Olival
+
+![Olival](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/olival.jpg)
+
+
+
 ## How to Use
 
 ```bash
