@@ -14,6 +14,10 @@ Some Gazebo worlds created to benchmark path planning algorithms.
 
 ![Olival](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/olival.jpg)
 
+### Substation_2
+
+![Substation_2](https://github.com/gelardrc/gazebo_worlds/blob/main/img/worlds/substation_2.jpg)
+
 
 
 ## How to Use
