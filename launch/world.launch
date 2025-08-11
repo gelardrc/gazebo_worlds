@@ -5,11 +5,14 @@
 	<arg name="rviz" default="false"/>
 	<arg name="gui" default="true"/>
 	<arg name="rviz_config" default="$(find gazebo_worlds)/rviz/default.rviz"/>
+	<arg name="buffer_map" default="false"/>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="world_name" default="$(arg world)"/>
 		<arg name="gui" default="$(arg gui)"/>
 	</include>
 	<node name="map" pkg="map_server" type="map_server" args="$(arg map_file)"/>
 	<node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config)"/>
-
+	<node if="$(arg buffer_map)" pkg="gazebo_worlds" type="buffermap.py" name="buffer_map" >
+		<param name="buffer_radius" value="1"/>
+	</node>
 </launch>
