@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <launch>
 	<arg name="world" default="$(find gazebo_worlds)/worlds/plain_solar_farm.world"/> <!-- you may change GAZEBO_RESOURCE_PATH -->
-	<arg name="map" default="$(find gazebo_worlds)/map/plain_solar_farm.yaml"/>
-	<arg name="rviz" default="False"/>
+	<arg name="map_file" default="$(find gazebo_worlds)/map/plain_solar_farm.yaml"/>
+	<arg name="rviz" default="false"/>
+	<arg name="gui" default="true"/>
 	<arg name="rviz_config" default="$(find gazebo_worlds)/rviz/default.rviz"/>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="world_name" default="$(arg world)"/>
+		<arg name="gui" default="$(arg gui)"/>
 	</include>
-	<node name="map" pkg="map_server" type="map_server" args="$(arg map)"/>
-	<node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz"/>
+	<node name="map" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+	<node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config)"/>
 
 </launch>
