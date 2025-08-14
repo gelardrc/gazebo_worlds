@@ -8,8 +8,8 @@ def dilate_obstacles(map_data, radius_cells):
     """
     Expande áreas ocupadas e desconhecidas no mapa.
     """
-    occupied = (map_data > 50) | (map_data == -1)  # 1 p/ ocupado ou desconhecido
-    struct = generate_binary_structure(2, 1)       # conexões 4-vizinhos
+    occupied = (map_data > 80) | (map_data == -1)  # 1 p/ ocupado ou desconhecido
+    struct = generate_binary_structure(2, 2)       # conexões 4-vizinhos
     dilated = binary_dilation(occupied, structure=struct, iterations=radius_cells)
     return dilated.astype(np.int8)
 
