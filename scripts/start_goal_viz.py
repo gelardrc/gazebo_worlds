@@ -4,10 +4,15 @@
 import rospy
 import ast
 from visualization_msgs.msg import Marker
+from nav_msgs.msg import OccupancyGrid
+
 
 class StartGoalViz:
     def __init__(self):
         rospy.init_node("start_goal_viz", anonymous=False)
+
+        rospy.Subscriber("/map", OccupancyGrid, self.map_cb)
+        rospy.wait_for_message("/map", OccupancyGrid)
 
         self.frame = rospy.get_param("~frame", "map")
 
@@ -25,6 +30,9 @@ class StartGoalViz:
         
         while not rospy.is_shutdown():
             self.publish_markers()
+
+    def map_cb(self,data):
+        self.map = data  
 
     def parse_list_param(self, name, default):
         raw = rospy.get_param(name, default)
@@ -46,27 +54,27 @@ class StartGoalViz:
         m = Marker()
         m.header.frame_id = self.frame
         m.header.stamp = rospy.Time.now()
-    
+
         m.ns = "start_goal"
         m.id = mid
         m.type = Marker.CUBE
         m.action = Marker.ADD
-    
-        m.pose.position.x = x + 0.5  # centro da célula
-        m.pose.position.y = y + 0.5
+
+        m.pose.position.x = (x*self.map.info.resolution + self.map.info.origin.position.x)  + self.map.info.resolution/2  # centro da célula
+        m.pose.position.y = (y*self.map.info.resolution + self.map.info.origin.position.y)  + self.map.info.resolution/2
         m.pose.position.z = 0.05
-    
+
         m.pose.orientation.w = 1.0
-    
+
         m.scale.x = 1.0
         m.scale.y = 1.0
         m.scale.z = 0.1
-    
+
         m.color.r = r
         m.color.g = g
         m.color.b = b
         m.color.a = 1.0
-    
+
         return m
 
     def publish_markers(self):
