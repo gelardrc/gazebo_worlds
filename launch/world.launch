@@ -7,6 +7,9 @@
 	<arg name="rviz_config" default="$(find gazebo_worlds)/rviz/default.rviz"/>
 	<arg name="buffer_map" default="false"/>
     <arg name="buffer_radius" default="1"/>
+	<arg name="start" default="[0,0]"/>
+	<arg name="target" default="[1,1]"/>
+
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="world_name" default="$(arg world)"/>
@@ -17,4 +20,11 @@
 	<node if="$(arg buffer_map)" pkg="gazebo_worlds" type="buffermap.py" name="buffer_map" >
 		<param name="buffer_radius" value="$(arg buffer_radius)"/>
 	</node>
+
+	<node name="start_goal" pkg="gazebo_worlds" type="start_goal_viz.py">
+		<param name="start" value="$(arg start)"/>
+		<param name="target" value="$(arg target)"/>
+
+	</node>
+	
 </launch>
